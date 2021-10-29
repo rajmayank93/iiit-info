@@ -94,16 +94,17 @@ class _loginpageState extends State<signuppage> {
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                       onPressed: () {
-                        FirebaseAuth.instance.createUserWithEmailAndPassword(
-                            email: usernamecontroller.text,
-                            password: passwordcontroller.text);
-                        FirebaseAuth.instance.currentUser
-                            ?.sendEmailVerification()
-                            .then((value) => Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => signinpage(),
-                                )));
+                        FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: usernamecontroller.text,
+                                password: passwordcontroller.text)
+                            .then((value) => FirebaseAuth.instance.currentUser
+                                ?.sendEmailVerification()
+                                .then((value) => Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => signinpage(),
+                                    ))));
                       },
                       child: Text(
                         'Signup',

@@ -12,7 +12,7 @@ import 'package:hackathon/drawers/maindrawer.dart';
 import 'package:hackathon/login_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-Future<void> main() async {
+void main() {
   runApp(MyApp());
 }
 
@@ -92,28 +92,31 @@ class _loginpageState extends State<loginpage> {
   }
 
   Column loginpagebutton() {
-    return Column(mainAxisSize: MainAxisSize.min, children: [
-      FloatingActionButton.extended(
-        onPressed: () {},
-        label: Text('Sign Up'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      FloatingActionButton.extended(
-        onPressed: () {
-          controller.login();
-        },
-        icon: Icon(
-          FontAwesomeIcons.google,
-        ),
-        label: Text('Sign In With Google'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
-      TextButton(onPressed: () {}, child: Text('Have an account? login'))
-    ]);
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton.extended(
+            onPressed: () {},
+            label: Text('Sign Up'),
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              controller.login();
+            },
+            icon: Icon(
+              FontAwesomeIcons.google,
+            ),
+            label: Text('Sign In With Google'),
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+          ),
+          TextButton(onPressed: () {}, child: Text('Have an account? login'))
+        ]);
   }
 }

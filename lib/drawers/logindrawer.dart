@@ -12,7 +12,7 @@ Drawer logindrawer(BuildContext context) {
     child: ListView(
       children: <Widget>[
         Container(
-          height: 200,
+          height: 220,
           child: DrawerHeader(
               child: Column(
             children: [
@@ -22,8 +22,14 @@ Drawer logindrawer(BuildContext context) {
                     .image,
                 radius: 50,
               ),
+              SizedBox(
+                height: 8,
+              ),
               Text(controller.googleAccount.value?.displayName ?? '',
                   style: TextStyle(color: Colors.white, fontSize: 24)),
+              SizedBox(
+                height: 8,
+              ),
               Text(controller.googleAccount.value?.email ?? '',
                   style: TextStyle(color: Colors.white, fontSize: 20)),
               SizedBox(

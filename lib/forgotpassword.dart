@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/main.dart';
+import 'package:hackathon/signinpage.dart';
 import 'package:hackathon/signup/signup.dart';
 
 class forgotpassword extends StatefulWidget {
@@ -70,7 +71,7 @@ class _loginpageState extends State<forgotpassword> {
                             .then((value) => Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => signuppage(),
+                                  builder: (context) => signinpage(),
                                 )));
                       },
                       child: Text(

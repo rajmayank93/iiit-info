@@ -116,13 +116,6 @@ class _loginpageState extends State<signinpage> {
                                 MaterialPageRoute(
                                   builder: (context) => afterloginmainpage(),
                                 ));
-                          } else {
-                            return Fluttertoast.showToast(
-                              msg: "Email not verified",
-                              gravity: ToastGravity.CENTER,
-                              backgroundColor: Colors.white,
-                              textColor: Colors.black,
-                            );
                           }
                         });
                       },

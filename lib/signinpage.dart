@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/forgotpassword.dart';
 import 'package:hackathon/main.dart';
@@ -106,11 +107,24 @@ class _loginpageState extends State<signinpage> {
                             .signInWithEmailAndPassword(
                                 email: usernamecontroller.text,
                                 password: passwordcontroller.text)
-                            .then((value) => Navigator.pushReplacement(
+                            .then((value) {
+                          if (FirebaseAuth
+                                  .instance.currentUser?.emailVerified ==
+                              true) {
+                            Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => afterloginmainpage(),
-                                )));
+                                ));
+                          } else {
+                            return Fluttertoast.showToast(
+                              msg: "Email not verified",
+                              gravity: ToastGravity.CENTER,
+                              backgroundColor: Colors.white,
+                              textColor: Colors.black,
+                            );
+                          }
+                        });
                       },
                       child: Text(
                         'Signin',

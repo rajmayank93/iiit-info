@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/main.dart';
 import 'package:hackathon/signinpage.dart';
-import 'package:hackathon/signup/verifypage.dart';
 
 class signuppage extends StatefulWidget {
   @override

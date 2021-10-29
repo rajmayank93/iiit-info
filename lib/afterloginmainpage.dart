@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/main.dart';
 
 class afterloginmainpage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _loginpageState extends State<afterloginmainpage> {
           style: TextStyle(color: Colors.white),
         ),
       ),
+      drawer: loginmaindrawer(context),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,20 +33,6 @@ class _loginpageState extends State<afterloginmainpage> {
                 '$emailid',
                 style: TextStyle(color: Colors.white),
               ),
-            ),
-            FloatingActionButton.extended(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => loginpage(),
-                    ));
-              },
-              icon: Icon(Icons.logout),
-              label: Text('Sign out'),
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
             ),
           ],
         ),

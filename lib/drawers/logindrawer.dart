@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:hackathon/aboutuspage.dart';
 import 'package:hackathon/contactuspage.dart';
 import 'package:hackathon/login_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final controller = Get.put(LoginController());
 Drawer logindrawer(BuildContext context) {
@@ -88,7 +89,9 @@ Drawer logindrawer(BuildContext context) {
             'logout',
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          onTap: () {
+          onTap: () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            prefs.remove('gmail');
             controller.logout();
             Navigator.pop(context);
           },

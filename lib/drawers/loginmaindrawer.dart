@@ -5,6 +5,8 @@ import 'package:hackathon/aboutuspage.dart';
 import 'package:hackathon/changepassword.dart';
 import 'package:hackathon/contactuspage.dart';
 import 'package:hackathon/login_controller.dart';
+import 'package:hackathon/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Drawer loginmaindrawer(BuildContext context) {
   return Drawer(
@@ -100,7 +102,15 @@ Drawer loginmaindrawer(BuildContext context) {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onTap: () {
-            FirebaseAuth.instance.signOut();
+            FirebaseAuth.instance.signOut().then((value) async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.remove('Email');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => loginpage(),
+                  ));
+            });
             Navigator.pop(context);
           },
         ),

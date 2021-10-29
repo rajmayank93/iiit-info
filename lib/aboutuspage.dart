@@ -6,9 +6,9 @@ class aboutuspage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      backgroundColor: Colors.black54,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.redAccent,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

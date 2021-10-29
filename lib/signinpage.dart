@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/forgotpassword.dart';
 import 'package:hackathon/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class signinpage extends StatefulWidget {
   @override
@@ -18,9 +19,9 @@ class _loginpageState extends State<signinpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.redAccent,
         title: Text(
           'SignIn',
           style: TextStyle(color: Colors.white),
@@ -37,7 +38,7 @@ class _loginpageState extends State<signinpage> {
                   child: Text(
                     'SignIn',
                     style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
                   )),
@@ -92,14 +93,15 @@ class _loginpageState extends State<signinpage> {
                           builder: (context) => forgotpassword(),
                         ));
                   },
-                  child: Text('Forgot Password')),
+                  child: Text('Forgot Password',
+                      style: TextStyle(color: Colors.white, fontSize: 15))),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
                   height: 50,
                   width: 20,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                       onPressed: () {
@@ -107,10 +109,13 @@ class _loginpageState extends State<signinpage> {
                             .signInWithEmailAndPassword(
                                 email: usernamecontroller.text,
                                 password: passwordcontroller.text)
-                            .then((value) {
+                            .then((value) async {
                           if (FirebaseAuth
                                   .instance.currentUser?.emailVerified ==
                               true) {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.setString('Email', usernamecontroller.text);
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -121,7 +126,7 @@ class _loginpageState extends State<signinpage> {
                       },
                       child: Text(
                         'Signin',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.redAccent),
                       )),
                 ),
               ),

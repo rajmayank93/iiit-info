@@ -1,8 +1,37 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/main.dart';
+
+class afterloginapp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: AnimatedSplashScreen(
+            splash: Center(
+                child: Text(
+              "IIIT's Info",
+              style: TextStyle(
+                color: Colors.white70,
+                fontWeight: FontWeight.bold,
+                fontSize: 29,
+              ),
+            )),
+            duration: 3000,
+            splashTransition: SplashTransition.decoratedBoxTransition,
+            backgroundColor: Colors.grey.shade900,
+            nextScreen: afterloginmainpage()),
+      ),
+    );
+  }
+}
 
 class afterloginmainpage extends StatefulWidget {
   @override
@@ -10,13 +39,13 @@ class afterloginmainpage extends StatefulWidget {
 }
 
 class _loginpageState extends State<afterloginmainpage> {
-  String? emailid = FirebaseAuth.instance.currentUser?.email;
+  String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.redAccent,
         title: Text(
           'IIIT info',
           style: TextStyle(color: Colors.white),
@@ -30,7 +59,7 @@ class _loginpageState extends State<afterloginmainpage> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                '$emailid',
+                emailid,
                 style: TextStyle(color: Colors.white),
               ),
             ),

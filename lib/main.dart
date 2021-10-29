@@ -3,17 +3,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/afterloginpage.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/maindrawer.dart';
 import 'package:hackathon/login_controller.dart';
 import 'package:hackathon/signinpage.dart';
 import 'package:hackathon/signup/signup.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString('Email');
+  runApp(email == null ? MyApp() : afterloginapp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,22 +30,17 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: AnimatedSplashScreen(
-            splash: Container(
-                child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "IIIT's Info",
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 29,
-                  ),
-                ),
-              ],
+            splash: Center(
+                child: Text(
+              "IIIT's Info",
+              style: TextStyle(
+                color: Colors.white70,
+                fontWeight: FontWeight.bold,
+                fontSize: 29,
+              ),
             )),
             duration: 3000,
-            splashTransition: SplashTransition.fadeTransition,
+            splashTransition: SplashTransition.decoratedBoxTransition,
             backgroundColor: Colors.grey.shade900,
             nextScreen: loginpage()),
       ),
@@ -63,9 +62,9 @@ class _loginpageState extends State<loginpage> {
 
   Scaffold loginpagetest(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.redAccent,
         appBar: AppBar(
-          backgroundColor: Colors.grey[900],
+          backgroundColor: Colors.redAccent,
           title: Text(
             'Login',
             style: TextStyle(color: Colors.white),
@@ -92,9 +91,8 @@ class _loginpageState extends State<loginpage> {
   }
 
   Column loginpagebutton() {
-    return Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
+    return Column(mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton.extended(
             onPressed: () async {
@@ -112,8 +110,11 @@ class _loginpageState extends State<loginpage> {
             height: 15,
           ),
           FloatingActionButton.extended(
-            onPressed: () {
+            onPressed: () async {
               controller.login();
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setString(
+                  'gmail', controller.googleAccount.value?.email ?? '');
             },
             icon: Icon(
               FontAwesomeIcons.google,
@@ -130,7 +131,23 @@ class _loginpageState extends State<loginpage> {
                       builder: (context) => signinpage(),
                     ));
               },
-              child: Text('Have an account? login'))
+              child: Text(
+                'Have an account? login',
+                style: TextStyle(color: Colors.white),
+              )),
         ]);
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Hello',
+          style: TextStyle(color: Colors.white),
+        ),
+        Text('Hi', style: TextStyle(color: Colors.white)),
+        Center(
+          child: Text('Hello', style: TextStyle(color: Colors.white)),
+        )
+      ],
+    );
   }
 }

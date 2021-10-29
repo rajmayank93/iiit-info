@@ -16,9 +16,9 @@ class _loginpageState extends State<forgotpassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.redAccent,
       appBar: AppBar(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.redAccent,
         title: Text(
           'Forgot Password',
           style: TextStyle(color: Colors.white),
@@ -35,7 +35,7 @@ class _loginpageState extends State<forgotpassword> {
                   child: Text(
                     'Forgot Password',
                     style: TextStyle(
-                        color: Colors.blue,
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
                   )),
@@ -61,7 +61,7 @@ class _loginpageState extends State<forgotpassword> {
                   height: 50,
                   width: 20,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                       onPressed: () {
@@ -76,7 +76,7 @@ class _loginpageState extends State<forgotpassword> {
                       },
                       child: Text(
                         'Reset Password',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.redAccent),
                       )),
                 ),
               ),

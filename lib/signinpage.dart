@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon/afterloginmainpage.dart';
+import 'package:hackathon/forgotpassword.dart';
 import 'package:hackathon/main.dart';
 
 class signinpage extends StatefulWidget {
@@ -82,6 +83,15 @@ class _loginpageState extends State<signinpage> {
                   ),
                 ),
               ),
+              TextButton(
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => forgotpassword(),
+                        ));
+                  },
+                  child: Text('Forgot Password')),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(

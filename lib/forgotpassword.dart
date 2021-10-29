@@ -1,20 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/main.dart';
-import 'package:hackathon/signinpage.dart';
-import 'package:hackathon/signup/verifypage.dart';
+import 'package:hackathon/signup/signup.dart';
 
-class signuppage extends StatefulWidget {
+class forgotpassword extends StatefulWidget {
   @override
-  State<signuppage> createState() => _loginpageState();
+  State<forgotpassword> createState() => _loginpageState();
 }
 
-class _loginpageState extends State<signuppage> {
-  bool _isObscure = true;
+class _loginpageState extends State<forgotpassword> {
   final usernamecontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +19,7 @@ class _loginpageState extends State<signuppage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         title: Text(
-          'Signup',
+          'Forgot Password',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -35,7 +32,7 @@ class _loginpageState extends State<signuppage> {
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    'Create an account',
+                    'Forgot Password',
                     style: TextStyle(
                         color: Colors.blue,
                         fontSize: 20,
@@ -57,33 +54,6 @@ class _loginpageState extends State<signuppage> {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.all(10),
-                child: TextField(
-                  obscureText: _isObscure,
-                  style: TextStyle(color: Colors.white),
-                  controller: passwordcontroller,
-                  keyboardType: TextInputType.streetAddress,
-                  textCapitalization: TextCapitalization.sentences,
-                  decoration: InputDecoration(
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    hintStyle: TextStyle(color: Colors.white),
-                    hintText: 'Enter Password',
-                    suffixIcon: IconButton(
-                      icon: Icon(
-                          _isObscure ? Icons.visibility : Icons.visibility_off),
-                      onPressed: () {
-                        setState(() {
-                          _isObscure = !_isObscure;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Container(
@@ -94,19 +64,17 @@ class _loginpageState extends State<signuppage> {
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                       onPressed: () {
-                        FirebaseAuth.instance.createUserWithEmailAndPassword(
-                            email: usernamecontroller.text,
-                            password: passwordcontroller.text);
-                        FirebaseAuth.instance.currentUser
-                            ?.sendEmailVerification()
+                        FirebaseAuth.instance
+                            .sendPasswordResetEmail(
+                                email: usernamecontroller.text)
                             .then((value) => Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => signinpage(),
+                                  builder: (context) => signuppage(),
                                 )));
                       },
                       child: Text(
-                        'Signup',
+                        'Reset Password',
                         style: TextStyle(color: Colors.white),
                       )),
                 ),

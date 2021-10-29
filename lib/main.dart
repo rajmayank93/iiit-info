@@ -1,18 +1,18 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/foundation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:hackathon/aboutuspage.dart';
 import 'package:hackathon/afterloginpage.dart';
-import 'package:hackathon/contactuspage.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/maindrawer.dart';
 import 'package:hackathon/login_controller.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hackathon/signinpage.dart';
+import 'package:hackathon/signup/signup.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -93,11 +93,17 @@ class _loginpageState extends State<loginpage> {
 
   Column loginpagebutton() {
     return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton.extended(
-            onPressed: () {},
+            onPressed: () async {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => signuppage(),
+                  ));
+            },
             label: Text('Sign Up'),
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
@@ -116,7 +122,15 @@ class _loginpageState extends State<loginpage> {
             backgroundColor: Colors.white,
             foregroundColor: Colors.black,
           ),
-          TextButton(onPressed: () {}, child: Text('Have an account? login'))
+          TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => signinpage(),
+                    ));
+              },
+              child: Text('Have an account? login'))
         ]);
   }
 }

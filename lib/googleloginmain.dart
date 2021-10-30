@@ -62,24 +62,26 @@ class _loginpageState extends State<afterlogingmail> {
           return logindrawer(context);
         }),
         body: Obx(() {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CircleAvatar(
-                backgroundImage: Image.network(
-                        controller.googleAccount.value?.photoUrl ?? '')
-                    .image,
-                radius: 100,
-              ),
-              Text(controller.googleAccount.value?.displayName ?? '',
-                  style: TextStyle(color: Colors.white)),
-              Text(controller.googleAccount.value?.email ?? '',
-                  style: TextStyle(color: Colors.white)),
-              SizedBox(
-                height: 16,
-              ),
-            ],
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  backgroundImage: Image.network(
+                          controller.googleAccount.value?.photoUrl ?? '')
+                      .image,
+                  radius: 100,
+                ),
+                Text(controller.googleAccount.value?.displayName ?? '',
+                    style: TextStyle(color: Colors.white)),
+                Text(controller.googleAccount.value?.email ?? '',
+                    style: TextStyle(color: Colors.white)),
+                SizedBox(
+                  height: 16,
+                ),
+              ],
+            ),
           );
         }));
   }

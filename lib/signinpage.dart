@@ -121,6 +121,13 @@ class _loginpageState extends State<signinpage> {
                                 MaterialPageRoute(
                                   builder: (context) => afterloginmainpage(),
                                 ));
+                          } else {
+                            return Fluttertoast.showToast(
+                                msg: 'User not verified',
+                                gravity: ToastGravity.BOTTOM,
+                                fontSize: 18,
+                                backgroundColor: Colors.white,
+                                textColor: Colors.black);
                           }
                         });
                       },

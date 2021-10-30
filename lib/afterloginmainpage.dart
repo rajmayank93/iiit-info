@@ -1,4 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -40,17 +42,8 @@ class afterloginmainpage extends StatefulWidget {
 
 class _loginpageState extends State<afterloginmainpage> {
   String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
-
-  final List<String> college = <String>[
-    'IIIT HYDERABAD',
-    'IIIT BANGLORE',
-    'IIIT GUWAHATI',
-    'IIIT JABALPUR',
-    'IIIT Gwalior',
-    'IIIT Allahabad',
-    'IIITDM kanchipuram'
-  ];
-
+  final Stream<QuerySnapshot> _collegesList =
+      FirebaseFirestore.instance.collection('College_List').snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,35 +56,42 @@ class _loginpageState extends State<afterloginmainpage> {
           ),
         ),
         drawer: loginmaindrawer(context),
-        body: ListView.builder(
-          itemBuilder: (BuildContext, index) {
-            return Card(
-              child: ListTile(
-                leading: IconButton(
-                  icon: Icon(
-                    Icons.book_outlined,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    // do something
-                  },
+        body: Userinfo());
+  }
+}
+
+class Userinfo extends StatefulWidget {
+  @override
+  _UserinfoState createState() => _UserinfoState();
+}
+
+class _UserinfoState extends State<Userinfo> {
+  final Stream<QuerySnapshot> _collegesstream =
+      FirebaseFirestore.instance.collection('College_List').snapshots();
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: _collegesstream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            CircularProgressIndicator();
+          }
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
+              return ListTile(
+                onTap: () {},
+                title: Text(
+                  data['Name'],
+                  style: TextStyle(color: Colors.white),
                 ),
-                title: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    (college[index]),
-                    // onPressed: () {
-                    //   // do something
-                    // },
-                  ),
-                ),
-              ),
-            );
-          },
-          itemCount: college.length,
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(4),
-          scrollDirection: Axis.vertical,
-        ));
+              );
+            }).toList(),
+          );
+        });
   }
 }

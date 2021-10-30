@@ -7,6 +7,7 @@ import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/afterloginpage.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/maindrawer.dart';
+import 'package:hackathon/googleloginmain.dart';
 import 'package:hackathon/login_controller.dart';
 import 'package:hackathon/signinpage.dart';
 import 'package:hackathon/signup/signup.dart';
@@ -17,7 +18,10 @@ void main() async {
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('Email');
-  runApp(email == null ? MyApp() : afterloginapp());
+  var gmail = prefs.getString('gmail');
+  runApp(email == null
+      ? (gmail == null ? MyApp() : afterlogingmailapp())
+      : afterloginapp());
 }
 
 class MyApp extends StatelessWidget {
@@ -70,29 +74,16 @@ class _loginpageState extends State<loginpage> {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        drawer: Obx(() {
-          if (controller.googleAccount.value == null) {
-            return maindrawer(context);
-          } else {
-            return logindrawer(context);
-          }
-        }),
+        drawer: maindrawer(context),
         body: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Center(
-              child: Obx(() {
-                if (controller.googleAccount.value == null) {
-                  return loginpagebutton();
-                } else {
-                  return buildafterlogin();
-                }
-              }),
-            )));
+            child: Center(child: loginpagebutton())));
   }
 
   Column loginpagebutton() {
-    return Column(mainAxisAlignment: MainAxisAlignment.center,
-        //mainAxisSize: MainAxisSize.min,
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton.extended(
             onPressed: () async {
@@ -111,10 +102,7 @@ class _loginpageState extends State<loginpage> {
           ),
           FloatingActionButton.extended(
             onPressed: () async {
-              controller.login();
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString(
-                  'gmail', controller.googleAccount.value?.email ?? '');
+              controller.login(context);
             },
             icon: Icon(
               FontAwesomeIcons.google,
@@ -136,18 +124,5 @@ class _loginpageState extends State<loginpage> {
                 style: TextStyle(color: Colors.white),
               )),
         ]);
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Hello',
-          style: TextStyle(color: Colors.white),
-        ),
-        Text('Hi', style: TextStyle(color: Colors.white)),
-        Center(
-          child: Text('Hello', style: TextStyle(color: Colors.white)),
-        )
-      ],
-    );
   }
 }

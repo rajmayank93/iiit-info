@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/login_controller.dart';
 
-final controller = Get.put(LoginController());
-
-Column buildafterlogin() {
+Column buildafterlogin(controller) {
   return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
     mainAxisSize: MainAxisSize.min,
     children: [
       CircleAvatar(

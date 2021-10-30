@@ -90,10 +90,9 @@ Drawer logindrawer(BuildContext context) {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onTap: () async {
+            controller.logout(context);
             SharedPreferences prefs = await SharedPreferences.getInstance();
             prefs.remove('gmail');
-            controller.logout();
-            Navigator.pop(context);
           },
         ),
       ],

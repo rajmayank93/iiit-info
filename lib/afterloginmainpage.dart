@@ -91,8 +91,12 @@ class _UserinfoState extends State<Userinfo> {
                 ),
                 onTap: () {
                   var documentid = document.id;
-                  print(documentid);
-                  collegeinfo(documentid, context);
+                  var collegename = data['Name'];
+                  var collegeestablished = data['Established'];
+                  var collegeplacement = data['Avg_CTC'];
+                  var collegerank = data['NIRF Ranking'];
+                  collegeinfo(documentid, collegeplacement, collegeestablished,
+                      collegerank, collegename, context);
                 },
                 title: Text(
                   data['Name'],

@@ -5,17 +5,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hackathon/collegereviews.dart';
 import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/main.dart';
 
 class collegeinfopage extends StatefulWidget {
   @override
+  static var college_id;
+  static var college_ctc;
+  static var college_established;
+  static var college_rank;
   static var collegename;
   State<collegeinfopage> createState() => _loginpageState();
 }
 
-void collegeinfo(var college_name, BuildContext context) {
-  collegeinfopage.collegename = college_name;
+void collegeinfo(var collegeid, var collegectc, var collegeestablished,
+    var collegerank, var collegename, BuildContext context) {
+  collegeinfopage.college_id = collegeid;
+  collegeinfopage.college_ctc = collegectc;
+  collegeinfopage.college_established = collegeestablished;
+  collegeinfopage.college_rank = collegerank;
+  collegeinfopage.collegename = collegename;
   Navigator.push(
       context,
       MaterialPageRoute(
@@ -24,26 +34,89 @@ void collegeinfo(var college_name, BuildContext context) {
 }
 
 class _loginpageState extends State<collegeinfopage> {
-  final Stream collegedata = FirebaseFirestore.instance
-      .collection('College_List')
-      .doc(collegeinfopage.collegename)
-      .snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text(
-          'IIIT info',
-          style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Text(
+            'IIIT info',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      body: Center(
-          child: Text(
-        collegeinfopage.collegename,
-        style: TextStyle(color: Colors.white),
-      )),
-    );
+        body: ListView(
+          children: [
+            Center(
+              child: Text(
+                collegeinfopage.collegename,
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 25, right: 25, bottom: 16, top: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'NIRF Rank',
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                  Text(
+                    collegeinfopage.college_rank,
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 25, right: 25, bottom: 16, top: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Established',
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                  Text(
+                    collegeinfopage.college_established,
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 25, right: 25, bottom: 16, top: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Average CTC',
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                  Text(
+                    collegeinfopage.college_ctc,
+                    style: TextStyle(color: Colors.white, fontSize: 19),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Center(
+                child: FloatingActionButton.extended(
+                    onPressed: () {
+                      collegeratingsinfo(collegeinfopage.college_id, context);
+                    },
+                    label: Text('Reviews'))),
+          ],
+        ));
   }
 }

@@ -19,7 +19,8 @@ void main() async {
   var email = prefs.getString('Email');
   var gmail = prefs.getString('gmail');
   runApp(email == null
-      ? (gmail == null ? MyApp() : afterlogingmailapp())
+      //? (gmail == null
+      ? MyApp() // : afterlogingmailapp())
       : afterloginapp());
 }
 

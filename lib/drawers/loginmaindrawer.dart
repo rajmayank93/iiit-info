@@ -9,6 +9,7 @@ import 'package:hackathon/login_controller.dart';
 import 'package:hackathon/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+final controller = Get.put(LoginController());
 Drawer loginmaindrawer(BuildContext context) {
   return Drawer(
       child: Container(

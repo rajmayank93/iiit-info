@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hackathon/addreview.dart';
 import 'package:hackathon/collegereviews.dart';
 import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/main.dart';
@@ -111,11 +112,21 @@ class _loginpageState extends State<collegeinfopage> {
               height: 20,
             ),
             Center(
-                child: FloatingActionButton.extended(
+                child: ElevatedButton(
                     onPressed: () {
                       collegeratingsinfo(collegeinfopage.college_id, context);
                     },
-                    label: Text('Reviews'))),
+                    child: Text('Reviews'))),
+            Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => addratingspage(),
+                          ));
+                    },
+                    child: Text('Add Review'))),
           ],
         ));
   }

@@ -84,6 +84,10 @@ class _UserinfoState extends State<Userinfo> {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
               return ListTile(
+                trailing: Icon(
+                  Icons.keyboard_arrow_right_outlined,
+                  color: Colors.white,
+                ),
                 onTap: () {},
                 title: Text(
                   data['Name'],

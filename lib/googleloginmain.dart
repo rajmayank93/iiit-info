@@ -1,4 +1,5 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -61,28 +62,46 @@ class _loginpageState extends State<afterlogingmail> {
         drawer: Obx(() {
           return logindrawer(context);
         }),
-        body: Obx(() {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircleAvatar(
-                  backgroundImage: Image.network(
-                          controller.googleAccount.value?.photoUrl ?? '')
-                      .image,
-                  radius: 100,
+        body: googleuserinfo());
+  }
+}
+
+class googleuserinfo extends StatefulWidget {
+  @override
+  _UserinfoState createState() => _UserinfoState();
+}
+
+class _UserinfoState extends State<googleuserinfo> {
+  final Stream<QuerySnapshot> _collegesstream =
+      FirebaseFirestore.instance.collection('College_List').snapshots();
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: _collegesstream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            CircularProgressIndicator();
+          }
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
+              return ListTile(
+                trailing: Icon(
+                  Icons.keyboard_arrow_right_outlined,
+                  color: Colors.white,
                 ),
-                Text(controller.googleAccount.value?.displayName ?? '',
-                    style: TextStyle(color: Colors.white)),
-                Text(controller.googleAccount.value?.email ?? '',
-                    style: TextStyle(color: Colors.white)),
-                SizedBox(
-                  height: 16,
+                onTap: () {},
+                title: Text(
+                  data['Name'],
+                  style: TextStyle(color: Colors.white),
                 ),
-              ],
-            ),
+              );
+            }).toList(),
           );
-        }));
+        });
   }
 }

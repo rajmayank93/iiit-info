@@ -1,4 +1,4 @@
-# hackathon
+# IIIT info
 
 A new Flutter project.
 

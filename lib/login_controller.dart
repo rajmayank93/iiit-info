@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,6 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginController extends GetxController {
   var _googleSignIn = GoogleSignIn();
   var googleAccount = Rx<GoogleSignInAccount?>(null);
+  authentication() async {
+    googleAccount.value = await _googleSignIn.signIn();
+  }
+
   login(BuildContext context) async {
     googleAccount.value = await _googleSignIn.signIn();
     SharedPreferences prefs = await SharedPreferences.getInstance();

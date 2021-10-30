@@ -36,13 +36,17 @@ class afterlogingmailapp extends StatelessWidget {
   }
 }
 
+final controller = Get.put(LoginController());
+
 class afterlogingmail extends StatefulWidget {
   @override
-  State<afterlogingmail> createState() => _loginpageState();
+  State<afterlogingmail> createState() {
+    controller.authentication();
+    return _loginpageState();
+  }
 }
 
 class _loginpageState extends State<afterlogingmail> {
-  final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

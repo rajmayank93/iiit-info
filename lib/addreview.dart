@@ -19,9 +19,6 @@ class _loginpageState extends State<addratingspage> {
   final titleController = TextEditingController();
   final reviewController = TextEditingController();
   @override
-  var email = FirebaseAuth.instance.currentUser?.email ??
-      controller.googleAccount.value?.email ??
-      '';
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
@@ -100,9 +97,9 @@ class _loginpageState extends State<addratingspage> {
                       onPressed: () {
                         FirebaseFirestore.instance
                             .collection(collegeinfopage.college_id)
-                            .doc(email)
+                            .doc(collegeinfopage.emailid)
                             .set({
-                          "Email": email,
+                          "Email": collegeinfopage.emailid,
                           "Title": titleController.text,
                           "Body": reviewController.text,
                         });

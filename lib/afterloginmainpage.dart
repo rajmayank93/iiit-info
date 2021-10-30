@@ -42,7 +42,6 @@ class afterloginmainpage extends StatefulWidget {
 }
 
 class _loginpageState extends State<afterloginmainpage> {
-  String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
   final Stream<QuerySnapshot> _collegesList =
       FirebaseFirestore.instance.collection('College_List').snapshots();
   @override
@@ -67,6 +66,7 @@ class Userinfo extends StatefulWidget {
 }
 
 class _UserinfoState extends State<Userinfo> {
+  String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
   final Stream<QuerySnapshot> _collegesstream =
       FirebaseFirestore.instance.collection('College_List').snapshots();
   @override
@@ -96,7 +96,12 @@ class _UserinfoState extends State<Userinfo> {
                   var collegeplacement = data['Avg_CTC'];
                   var collegerank = data['NIRF Ranking'];
                   collegeinfo(documentid, collegeplacement, collegeestablished,
-                      collegerank, collegename, context);
+                      collegerank, collegename, emailid);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => collegeinfopage(),
+                      ));
                 },
                 title: Text(
                   data['Name'],

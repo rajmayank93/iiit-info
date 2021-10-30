@@ -101,8 +101,18 @@ class _UserinfoState extends State<googleuserinfo> {
                   var collegeestablished = data['Established'];
                   var collegeplacement = data['Avg_CTC'];
                   var collegerank = data['NIRF Ranking'];
-                  collegeinfo(documentid, collegeplacement, collegeestablished,
-                      collegerank, collegename, context);
+                  collegeinfo(
+                      documentid,
+                      collegeplacement,
+                      collegeestablished,
+                      collegerank,
+                      collegename,
+                      controller.googleAccount.value?.email);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => collegeinfopage(),
+                      ));
                 },
                 title: Text(
                   data['Name'],

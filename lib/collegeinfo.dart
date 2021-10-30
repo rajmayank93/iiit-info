@@ -17,21 +17,18 @@ class collegeinfopage extends StatefulWidget {
   static var college_established;
   static var college_rank;
   static var collegename;
+  static var emailid;
   State<collegeinfopage> createState() => _loginpageState();
 }
 
 void collegeinfo(var collegeid, var collegectc, var collegeestablished,
-    var collegerank, var collegename, BuildContext context) {
+    var collegerank, var collegename, var loginmail) {
   collegeinfopage.college_id = collegeid;
   collegeinfopage.college_ctc = collegectc;
   collegeinfopage.college_established = collegeestablished;
   collegeinfopage.college_rank = collegerank;
   collegeinfopage.collegename = collegename;
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => collegeinfopage(),
-      ));
+  collegeinfopage.emailid = loginmail;
 }
 
 class _loginpageState extends State<collegeinfopage> {

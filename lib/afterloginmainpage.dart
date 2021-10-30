@@ -41,26 +41,33 @@ class afterloginmainpage extends StatefulWidget {
 class _loginpageState extends State<afterloginmainpage> {
   String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
 
-  final List<String> college = <String>['IIIT HYDERABAD', 'IIIT BANGLORE',
-    'IIIT GUWAHATI','IIIT JABALPUR','IIIT Gwalior','IIIT Allahabad','IIITDM kanchipuram'];
+  final List<String> college = <String>[
+    'IIIT HYDERABAD',
+    'IIIT BANGLORE',
+    'IIIT GUWAHATI',
+    'IIIT JABALPUR',
+    'IIIT Gwalior',
+    'IIIT Allahabad',
+    'IIITDM kanchipuram'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        title: Text(
-          'IIIT info',
-          style: TextStyle(color: Colors.white),
+        backgroundColor: Colors.black,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          title: Text(
+            'IIIT info',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
-      ),
-      drawer: loginmaindrawer(context),
+        drawer: loginmaindrawer(context),
         body: ListView.builder(
           itemBuilder: (BuildContext, index) {
             return Card(
               child: ListTile(
-                leading:  IconButton(
+                leading: IconButton(
                   icon: Icon(
                     Icons.book_outlined,
                     color: Colors.red,
@@ -71,7 +78,8 @@ class _loginpageState extends State<afterloginmainpage> {
                 ),
                 title: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text((college[index]),
+                  child: Text(
+                    (college[index]),
                     // onPressed: () {
                     //   // do something
                     // },

@@ -18,9 +18,9 @@ class _loginpageState extends State<changepassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         title: Text(
           'Change Password',
           style: TextStyle(color: Colors.white),
@@ -64,7 +64,7 @@ class _loginpageState extends State<changepassword> {
                       },
                       child: Text(
                         'Send password update link to email',
-                        style: TextStyle(color: Colors.redAccent),
+                        style: TextStyle(color: Colors.black),
                       )),
                 ),
               ),

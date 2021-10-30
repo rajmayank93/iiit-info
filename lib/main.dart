@@ -65,9 +65,9 @@ class _loginpageState extends State<loginpage> {
 
   Scaffold loginpagetest(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.black,
           title: Text(
             'Login',
             style: TextStyle(color: Colors.white),
@@ -76,52 +76,49 @@ class _loginpageState extends State<loginpage> {
         drawer: maindrawer(context),
         body: Padding(
             padding: const EdgeInsets.all(4.0),
-            child: Center(child: loginpagebutton())));
-  }
-
-  Column loginpagebutton() {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          FloatingActionButton.extended(
-            onPressed: () async {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => signuppage(),
-                  ));
-            },
-            label: Text('Sign Up'),
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          FloatingActionButton.extended(
-            onPressed: () async {
-              controller.login(context);
-            },
-            icon: Icon(
-              FontAwesomeIcons.google,
-            ),
-            label: Text('Sign In With Google'),
-            backgroundColor: Colors.white,
-            foregroundColor: Colors.black,
-          ),
-          TextButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => signinpage(),
-                    ));
-              },
-              child: Text(
-                'Have an account? login',
-                style: TextStyle(color: Colors.white),
-              )),
-        ]);
+            child: Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                  FloatingActionButton.extended(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => signuppage(),
+                          ));
+                    },
+                    label: Text('Sign Up'),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  FloatingActionButton.extended(
+                    onPressed: () async {
+                      controller.login(context);
+                    },
+                    icon: Icon(
+                      FontAwesomeIcons.google,
+                    ),
+                    label: Text('Sign In With Google'),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => signinpage(),
+                            ));
+                      },
+                      child: Text(
+                        'Have an account? login',
+                        style: TextStyle(color: Colors.white),
+                      )),
+                ]))));
   }
 }

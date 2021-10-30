@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/aboutuspage.dart';
 import 'package:hackathon/contactuspage.dart';
+import 'package:hackathon/googleloginmain.dart';
 import 'package:hackathon/login_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,7 +10,7 @@ final controller = Get.put(LoginController());
 Drawer logindrawer(BuildContext context) {
   return Drawer(
       child: Container(
-    color: Color.fromRGBO(50, 75, 205, 1),
+    color: Colors.black87,
     child: ListView(
       children: <Widget>[
         Container(
@@ -49,7 +50,11 @@ Drawer logindrawer(BuildContext context) {
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           onTap: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => afterlogingmail(),
+                ));
           },
         ),
         ListTile(

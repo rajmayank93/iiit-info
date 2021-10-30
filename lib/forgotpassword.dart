@@ -16,9 +16,9 @@ class _loginpageState extends State<forgotpassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         title: Text(
           'Forgot Password',
           style: TextStyle(color: Colors.white),
@@ -76,7 +76,7 @@ class _loginpageState extends State<forgotpassword> {
                       },
                       child: Text(
                         'Reset Password',
-                        style: TextStyle(color: Colors.redAccent),
+                        style: TextStyle(color: Colors.black),
                       )),
                 ),
               ),

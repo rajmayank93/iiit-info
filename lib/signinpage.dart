@@ -19,9 +19,9 @@ class _loginpageState extends State<signinpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         title: Text(
           'SignIn',
           style: TextStyle(color: Colors.white),
@@ -126,7 +126,7 @@ class _loginpageState extends State<signinpage> {
                       },
                       child: Text(
                         'Signin',
-                        style: TextStyle(color: Colors.redAccent),
+                        style: TextStyle(color: Colors.black),
                       )),
                 ),
               ),

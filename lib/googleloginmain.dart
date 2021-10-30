@@ -50,9 +50,9 @@ class _loginpageState extends State<afterlogingmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.black,
           title: Text(
             'IIIT info',
             style: TextStyle(color: Colors.white),

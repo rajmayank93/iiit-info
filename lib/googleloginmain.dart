@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hackathon/collegeinfo.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/login_controller.dart';
@@ -83,7 +84,7 @@ class _UserinfoState extends State<googleuserinfo> {
             return Text('Something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -94,7 +95,11 @@ class _UserinfoState extends State<googleuserinfo> {
                   Icons.keyboard_arrow_right_outlined,
                   color: Colors.white,
                 ),
-                onTap: () {},
+                onTap: () {
+                  var documentid = document.id;
+                  print(documentid);
+                  collegeinfo(documentid, context);
+                },
                 title: Text(
                   data['Name'],
                   style: TextStyle(color: Colors.white),

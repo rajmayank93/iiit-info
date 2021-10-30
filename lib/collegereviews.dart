@@ -46,8 +46,7 @@ class Userinfo extends StatefulWidget {
 
 class _UserinfoState extends State<Userinfo> {
   final Stream<QuerySnapshot> _collegesstream = FirebaseFirestore.instance
-      .collection('College_ratings')
-      .where(FieldPath.documentId, isEqualTo: collegeratings.collegename)
+      .collection(collegeratings.collegename)
       .snapshots();
   @override
   Widget build(BuildContext context) {

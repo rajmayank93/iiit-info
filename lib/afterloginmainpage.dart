@@ -40,6 +40,10 @@ class afterloginmainpage extends StatefulWidget {
 
 class _loginpageState extends State<afterloginmainpage> {
   String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
+
+  final List<String> college = <String>['IIIT HYDERABAD', 'IIIT BANGLORE',
+    'IIIT GUWAHATI','IIIT JABALPUR','IIIT Gwalior','IIIT Allahabad','IIITDM kanchipuram'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,20 +56,34 @@ class _loginpageState extends State<afterloginmainpage> {
         ),
       ),
       drawer: loginmaindrawer(context),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                emailid,
-                style: TextStyle(color: Colors.white),
+        body: ListView.builder(
+          itemBuilder: (BuildContext, index) {
+            return Card(
+              child: ListTile(
+                leading:  IconButton(
+                  icon: Icon(
+                    Icons.book_outlined,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {
+                    // do something
+                  },
+                ),
+                title: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text((college[index]),
+                    // onPressed: () {
+                    //   // do something
+                    // },
+                  ),
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            );
+          },
+          itemCount: college.length,
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(4),
+          scrollDirection: Axis.vertical,
+        ));
   }
 }

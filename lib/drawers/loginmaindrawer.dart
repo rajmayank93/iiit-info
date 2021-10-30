@@ -28,7 +28,7 @@ Drawer loginmaindrawer(BuildContext context) {
                 height: 16,
               ),
               Text(FirebaseAuth.instance.currentUser?.email ?? '',
-                  style: TextStyle(color: Colors.white, fontSize: 24)),
+                  style: TextStyle(color: Colors.white, fontSize: 16)),
               SizedBox(
                 height: 8,
               ),

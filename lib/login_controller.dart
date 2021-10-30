@@ -23,6 +23,8 @@ class LoginController extends GetxController {
 
   logout(BuildContext context) async {
     googleAccount.value = await _googleSignIn.signOut();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('gmail');
     Navigator.pushReplacement(
         context,
         MaterialPageRoute(

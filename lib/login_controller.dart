@@ -10,15 +10,15 @@ class LoginController extends GetxController {
   var _googleSignIn = GoogleSignIn();
   var googleAccount = Rx<GoogleSignInAccount?>(null);
   login(BuildContext context) async {
-    googleAccount.value = await _googleSignIn.signIn().then((value) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString('gmail', _googleSignIn.currentUser?.email ?? '');
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => afterlogingmail(),
-          ));
-    });
+    googleAccount.value = await _googleSignIn.signIn();
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('gmail', _googleSignIn.currentUser?.email ?? '');
+    print(prefs.getString('gmail'));
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => afterlogingmail(),
+        ));
   }
 
   logout(BuildContext context) async {

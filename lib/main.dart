@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/afterloginmainpage.dart';
-import 'package:hackathon/afterloginpage.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/maindrawer.dart';
 import 'package:hackathon/googleloginmain.dart';
@@ -20,7 +19,8 @@ void main() async {
   var email = prefs.getString('Email');
   var gmail = prefs.getString('gmail');
   runApp(email == null
-      ? (gmail == null ? MyApp() : afterlogingmailapp())
+      ? //(gmail == null ?
+      MyApp() // : afterlogingmailapp())
       : afterloginapp());
 }
 

@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hackathon/afterloginpage.dart';
 import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/loginmaindrawer.dart';
 import 'package:hackathon/login_controller.dart';
@@ -37,15 +36,13 @@ class afterlogingmailapp extends StatelessWidget {
   }
 }
 
-final controller = Get.put(LoginController());
-
 class afterlogingmail extends StatefulWidget {
   @override
   State<afterlogingmail> createState() => _loginpageState();
 }
 
 class _loginpageState extends State<afterlogingmail> {
-  String emailid = FirebaseAuth.instance.currentUser?.email ?? '';
+  final controller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +54,29 @@ class _loginpageState extends State<afterlogingmail> {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        drawer: logindrawer(context),
-        body: buildafterlogin(controller));
+        drawer: Obx(() {
+          return logindrawer(context);
+        }),
+        body: Obx(() {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CircleAvatar(
+                backgroundImage: Image.network(
+                        controller.googleAccount.value?.photoUrl ?? '')
+                    .image,
+                radius: 100,
+              ),
+              Text(controller.googleAccount.value?.displayName ?? '',
+                  style: TextStyle(color: Colors.white)),
+              Text(controller.googleAccount.value?.email ?? '',
+                  style: TextStyle(color: Colors.white)),
+              SizedBox(
+                height: 16,
+              ),
+            ],
+          );
+        }));
   }
 }

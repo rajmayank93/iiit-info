@@ -48,7 +48,8 @@ class _loginpageState extends State<addratingspage> {
                     }
                     return null;
                   },
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
+                  textCapitalization: TextCapitalization.sentences,
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colors.white),

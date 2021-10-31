@@ -108,14 +108,19 @@ class _loginpageState extends State<collegeinfopage> {
             SizedBox(
               height: 20,
             ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Center(
+                  child: FloatingActionButton.extended(
+                      onPressed: () {
+                        collegeratingsinfo(collegeinfopage.college_id, context);
+                      },
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      label: Text('Reviews'))),
+            ),
             Center(
-                child: ElevatedButton(
-                    onPressed: () {
-                      collegeratingsinfo(collegeinfopage.college_id, context);
-                    },
-                    child: Text('Reviews'))),
-            Center(
-                child: ElevatedButton(
+                child: FloatingActionButton.extended(
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -123,7 +128,9 @@ class _loginpageState extends State<collegeinfopage> {
                             builder: (context) => addratingspage(),
                           ));
                     },
-                    child: Text('Add Review'))),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    label: Text('Add Review'))),
           ],
         ));
   }

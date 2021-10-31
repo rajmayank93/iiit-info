@@ -54,7 +54,9 @@ class _UserinfoState extends State<Userinfo> {
         stream: _collegesstream,
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return Center(child: Text('Something went wrong'));
+            return Center(
+                child: Text('Something went wrong',
+                    style: TextStyle(color: Colors.white)));
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

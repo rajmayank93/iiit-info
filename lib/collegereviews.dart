@@ -39,6 +39,7 @@ class Userinfo extends StatefulWidget {
 }
 
 class _UserinfoState extends State<Userinfo> {
+  var ratingslength;
   final Stream<QuerySnapshot> _collegesstream = FirebaseFirestore.instance
       .collection(collegeratings.collegename)
       .snapshots();
@@ -55,6 +56,7 @@ class _UserinfoState extends State<Userinfo> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
+          ratingslength = snapshot.data?.size;
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data =
@@ -82,6 +84,18 @@ class _UserinfoState extends State<Userinfo> {
                             rating: data['rating'],
                             itemBuilder: (context, index) => Icon(
                               Icons.star,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            ratingslength.toString(),
+                            style: TextStyle(
                               color: Colors.white,
                             ),
                           ),

@@ -94,18 +94,6 @@ class _UserinfoState extends State<Userinfo> {
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            ratingslength.toString(),
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
                             data['Email'],
                             style: TextStyle(
                               color: Colors.white,

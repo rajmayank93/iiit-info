@@ -39,25 +39,32 @@ class aboutuspage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Team Name : Trio',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   Text(
-                    'Team Name : ',
+                    'Team members : ',
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   Column(
                     children: [
                       Text(
                         'Prajeeth (S20200020303)',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         'Mayank (S20200020280)',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                       Text(
                         'Aalhad (S20200010001)',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ],
                   )

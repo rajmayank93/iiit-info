@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/forgotpassword.dart';
-import 'package:hackathon/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class signinpage extends StatefulWidget {

@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hackathon/afterloginmainpage.dart';
-import 'package:hackathon/drawers/logindrawer.dart';
 import 'package:hackathon/drawers/maindrawer.dart';
-import 'package:hackathon/googleloginmain.dart';
 import 'package:hackathon/login_controller.dart';
 import 'package:hackathon/signinpage.dart';
 import 'package:hackathon/signup/signup.dart';
@@ -17,7 +15,6 @@ void main() async {
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var email = prefs.getString('Email');
-  var gmail = prefs.getString('gmail');
   runApp(email == null
       //? (gmail == null
       ? MyApp() // : afterlogingmailapp())

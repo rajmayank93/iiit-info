@@ -1,14 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hackathon/afterloginmainpage.dart';
 import 'package:hackathon/collegeinfo.dart';
-import 'package:hackathon/drawers/logindrawer.dart';
-import 'package:hackathon/forgotpassword.dart';
-import 'package:hackathon/main.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class addratingspage extends StatefulWidget {
   @override

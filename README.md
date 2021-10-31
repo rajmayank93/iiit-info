@@ -1,7 +1,7 @@
 # IIIT info
 # Team Details<br/>
- TEAM NAME :- TRIO
- MEMBERS NAME :-
+ TEAM NAME :- TRIO<br/>
+ MEMBERS NAME :- 
 
  NAME - PRAJEETH <br />
  ROLL - S20200020303 <br />

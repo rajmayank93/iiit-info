@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class collegeratings extends StatefulWidget {
   @override
@@ -71,22 +72,43 @@ class _UserinfoState extends State<Userinfo> {
                   alignment: Alignment.topLeft,
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        data['Email'],
-                        style: TextStyle(
-                          color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: RatingBarIndicator(
+                            unratedColor: Colors.grey.shade900,
+                            itemSize: 20,
+                            rating: data['rating'],
+                            itemBuilder: (context, index) => Icon(
+                              Icons.star,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        height: 8,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            data['Email'],
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
                       ),
-                      Text(
-                        data['Body'],
-                        style: TextStyle(
-                          color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            data['Body'],
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ],

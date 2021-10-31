@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hackathon/collegeinfo.dart';
 
 class addratingspage extends StatefulWidget {
@@ -10,6 +12,7 @@ class addratingspage extends StatefulWidget {
 class _loginpageState extends State<addratingspage> {
   final titleController = TextEditingController();
   final reviewController = TextEditingController();
+  var ratings;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +39,24 @@ class _loginpageState extends State<addratingspage> {
                         fontSize: 20,
                         fontWeight: FontWeight.w500),
                   )),
+              Center(
+                child: RatingBar.builder(
+                    unratedColor: Colors.grey.shade900,
+                    initialRating: 3,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: false,
+                    updateOnDrag: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => Icon(
+                          Icons.star,
+                          color: Colors.white,
+                        ),
+                    onRatingUpdate: (rating) {
+                      ratings = rating;
+                    }),
+              ),
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(10),
@@ -88,15 +109,30 @@ class _loginpageState extends State<addratingspage> {
                       borderRadius: BorderRadius.circular(20)),
                   child: TextButton(
                       onPressed: () {
-                        FirebaseFirestore.instance
-                            .collection(collegeinfopage.college_id)
-                            .doc(collegeinfopage.emailid)
-                            .set({
-                          "Email": collegeinfopage.emailid,
-                          "Title": titleController.text,
-                          "Body": reviewController.text,
-                        });
-                        Navigator.pop(context);
+                        if (ratings == null) {
+                          Fluttertoast.showToast(
+                              msg: 'Please add a rating',
+                              backgroundColor: Colors.white,
+                              textColor: Colors.black,
+                              gravity: ToastGravity.BOTTOM);
+                        } else if (titleController.text == '') {
+                          Fluttertoast.showToast(
+                              msg: 'Please add a Title to the review',
+                              backgroundColor: Colors.white,
+                              textColor: Colors.black,
+                              gravity: ToastGravity.BOTTOM);
+                        } else {
+                          FirebaseFirestore.instance
+                              .collection(collegeinfopage.college_id)
+                              .doc(collegeinfopage.emailid)
+                              .set({
+                            "Email": collegeinfopage.emailid,
+                            "Title": titleController.text,
+                            "rating": ratings,
+                            "Body": reviewController.text,
+                          });
+                          Navigator.pop(context);
+                        }
                       },
                       child: Text(
                         'Add review',

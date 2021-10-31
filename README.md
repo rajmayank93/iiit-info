@@ -24,7 +24,32 @@ Android mobile with Android 6.0 and above
  
  # Screenshots of the Application:-
  
- Drive Folder - https://drive.google.com/drive/folders/1-0GKV7k4g8VZM1rUtB-2zYyHkVuVhos-
+ ### Starting Page<br />
+ <img src="assets/Homepage.jpg" width="350" height="700"><br />
  
- 
+ ### Signin Page<br />
+ <img src="assets/Signin.jpg" width="350" height="700"><br />
 
+ ### Signup Page<br />
+ <img src="assets/Signuppage.jpg" width="350" height="700"><br />
+ 
+ ### User Verification Mail<br />
+ <img src="assets/Verifyemail.jpg" width="350" height="700"><br />
+ 
+ ### Forgot Password page<br />
+ <img src="assets/Forgotpassword.jpg" width="350" height="700"><br />
+ 
+ ### Password Reset Email<br />
+ <img src="assets/Passwordreaetemail.jpg" width="350" height="700"><br />
+ 
+ ### Colleges List (or) Main Page <br />
+ <img src="assets/Collegeslist.jpg" width="350" height="700"><br />
+ 
+ ### Selected College Info Page<br />
+ <img src="assets/Collegeinfo.jpg" width="350" height="700"><br />
+ 
+ ### Selected College Ratings and Reviews<br />
+ <img src="assets/Collegereviews.jpg" width="350" height="700"><br />
+ 
+ ### Rate and Review<br />
+ <img src="assets/Addreview.jpg" width="350" height="700"><br />

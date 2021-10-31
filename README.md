@@ -1,5 +1,5 @@
 # IIIT info
-#Team Details<br/>
+# Team Details<br/>
  TEAM NAME :- TRIO
  MEMBERS NAME :-
 

@@ -42,7 +42,7 @@ class _loginpageState extends State<addratingspage> {
               Center(
                 child: RatingBar.builder(
                     unratedColor: Colors.grey.shade900,
-                    initialRating: 3,
+                    initialRating: 0,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: false,

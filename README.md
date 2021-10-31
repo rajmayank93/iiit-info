@@ -1,6 +1,6 @@
 # IIIT info
-Markup: #Team Details#
-# TEAM NAME :- TRIO
+#Team Details
+ TEAM NAME :- TRIO
  MEMBERS NAME :-
 
  NAME - PRAJEETH <br />

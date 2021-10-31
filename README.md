@@ -1,4 +1,6 @@
 # IIIT info
+ ### About the app
+  This is an application which contains the details of all IIIT's and the user can rate the colleges and write reviews about them. It would be very helpful for the students who are going to fill the going to fill their choices for the councelling
 # TEAM NAME :- TRIO
  MEMBERS NAME :-
 
@@ -9,6 +11,8 @@
  NAME - AALHAD AJAY KATE <br />
  ROLL - S20200010001 <br />
 # Pre-requisites
+Android mobile with Android 6.0 and above
+# Steps to run the application
  1.install the apk from the link below <br />
           https://drive.google.com/file/d/1OGYhpiVzYAOJPH85L9QFIznbgDKSo6us/view?usp=drivesdk
  <br />

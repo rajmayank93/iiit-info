@@ -3,7 +3,8 @@
   This app is all about IIIT college Reviews where information as well as idea would be given by the respective college students,they share their opinion to younger coming students.
   This application contains the details of all IIIT's and the user can rate the colleges and write reviews about them. It would be very helpful for the students who are going to fill the choices for the counselling.
 ## Team Details
-TEAM NAME :- TRIO
+# TEAM NAME :- TRIO <br />
+
  MEMBERS NAME :-
 
  NAME - PRAJEETH <br />

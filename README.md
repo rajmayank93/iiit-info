@@ -1,6 +1,7 @@
 # IIIT info
  ### About the app
-  This is an application which contains the details of all IIIT's and the user can rate the colleges and write reviews about them. It would be very helpful for the students who are going to fill the going to fill their choices for the councelling
+  This app is all about IIIT college Reviews collector where information as well as idea would be given by the respective college's students share their opinion to younger coming students.
+  This is an application which contains the details of all IIIT's and the user can rate the colleges and write reviews about them. It would be very helpful for the students who are going to fill the choices for the counselling.
 # TEAM NAME :- TRIO
  MEMBERS NAME :-
 
@@ -18,7 +19,7 @@ Android mobile with Android 6.0 and above
  <br />
  2.Sign in with google or sign up, verify your email and sign in again
  
- # Screenshots of the Application(APK FILE):-
+ # Screenshots of the Application:-
  
  Drive Folder - https://drive.google.com/drive/folders/1-0GKV7k4g8VZM1rUtB-2zYyHkVuVhos-
  

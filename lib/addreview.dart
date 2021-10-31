@@ -20,7 +20,7 @@ class _loginpageState extends State<addratingspage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Add Review',
+          collegeinfopage.collegename,
           style: TextStyle(color: Colors.white),
         ),
       ),

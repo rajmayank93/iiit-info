@@ -31,7 +31,7 @@ class _loginpageState extends State<collegeinfopage> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Text(
-            'IIIT info',
+            collegeinfopage.college_id,
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -97,8 +97,20 @@ class _loginpageState extends State<collegeinfopage> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 20,
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(
+                  child: FloatingActionButton.extended(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => addratingspage(),
+                            ));
+                      },
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      label: Text('Add/Edit Review'))),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
@@ -109,20 +121,8 @@ class _loginpageState extends State<collegeinfopage> {
                       },
                       backgroundColor: Colors.white,
                       foregroundColor: Colors.black,
-                      label: Text('Reviews'))),
+                      label: Text('Ratings and Reviews'))),
             ),
-            Center(
-                child: FloatingActionButton.extended(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => addratingspage(),
-                          ));
-                    },
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    label: Text('Add Review'))),
           ],
         ));
   }

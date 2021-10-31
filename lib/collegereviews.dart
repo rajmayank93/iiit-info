@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:hackathon/collegeinfo.dart';
 
 class collegeratings extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _loginpageState extends State<collegeratings> {
         appBar: AppBar(
           backgroundColor: Colors.black,
           title: Text(
-            'IIIT info',
+            collegeinfopage.collegename,
             style: TextStyle(color: Colors.white),
           ),
         ),

@@ -43,7 +43,7 @@ Android mobile with Android 6.0 and above
  <img src="assets/Passwordreaetemail.jpg" width="350" height="700"><br />
  
  ### Colleges List (or) Main Page <br />
- <img src="assets/Collegeslist.jpg" width="350" height="400"><br />
+ <img src="assets/Collegeslist.jpg" width="350" height="700"><br />
  
  ### Selected College Info Page<br />
  <img src="assets/Collegeinfo.jpg" width="350" height="700"><br />
